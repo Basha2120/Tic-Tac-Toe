@@ -5,6 +5,7 @@ public class Main {
 
     public static String checkWinner()
     {
+        // To check the row,column,and diagonals to determine the winner
         for(int i=0;i<8;i++)
         {
             String line=null;
@@ -53,7 +54,7 @@ public class Main {
                 break;
             }
             else if(i==8) {
-                return "Draw";
+                return "Draw"; //If every slot is filled , It is a Draw
             }
         }
 
@@ -83,7 +84,7 @@ public class Main {
             board[i]=String.valueOf(i+1);
         }
         System.out.println("Welcome to Tic-Tac-Toe Game");
-        printBoard();
+        Main.printBoard();
         System.out.println("Game Starts with X. X Enter your slo.t");
 
         while(winner==null)
@@ -91,7 +92,7 @@ public class Main {
             int input;
             try{
                 input=sc.nextInt();
-                if(!(input>0 && input<=9))
+                if(!(input>0 && input<=9)) // Invalid input logic
                 {
                     System.out.println("Enter a valid Input.");
                     continue;
@@ -99,7 +100,7 @@ public class Main {
                 if(board[input-1].equals(String.valueOf(input)))
                 {
                     board[input-1]=turn;
-                    turn=(turn.equals("X"))?"O":"X";
+                    turn=(turn.equals("X"))?"O":"X"; // Toggle operation to switch turn
 
                     Main.printBoard();
                     winner=checkWinner();
@@ -108,7 +109,7 @@ public class Main {
                     System.out.println("Slot already booked.");
                 }
             }
-            catch(InputMismatchException e)
+            catch(InputMismatchException e) // Catches anything other than Integer is given as input
             {
                 System.out.println("Enter a valid Slot number.");
                 sc.nextLine();
